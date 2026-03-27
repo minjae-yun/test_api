@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>똑똑한 소비 결제</title>
+    <script src = "https://js.tosspayments.com/v1/payment"></script>
+</head>
+<body>
+    <h2>토스 테스트 결제</h2>
+    <button onclick="pay()">결제하기</button>
+
+    <script>
+        function pay() {
+            const clientKey = "test_ck_jExPeJWYVQjpa7MGkakxr49R5gvN";
+            const tossPayments = TossPayments(clientKey);
+            tossPayments.requestPayment("카드", {
+                amount : 1000,
+                orderId: "order-" + new Date().getTime(),
+                orderName : "테스트 결제",
+                successUrl : "http://localhost:8000/success",
+                failUrl : "http://localhost:8000/fail"
+            });
+        }
+    </script>
+</body>
+</html>
